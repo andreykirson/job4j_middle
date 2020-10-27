@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function validate() {
+            var x = document.forms["myForm"]["usr"].value;
+            if (x == "") {
+                alert("Please enter your name");
+                return false;
+            }
+            var y = document.forms["myForm"]["email"].value;
+            if (y == "") {
+                alert("Please enter your email");
+                return false;
+            }
+            var y = document.forms["myForm"]["pwd"].value;
+            if (y == "") {
+                alert("Please enter your password");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -14,7 +33,11 @@
     <h1>My First Bootstrap Page</h1>
     <p>This is some text.</p>
 
-    <form action="/action_page.php">
+    <form action="/cgi-bin/test.cgi" name="myForm" method="post">
+        <div class="form-group">
+            <label for="usr"> User: </label>
+            <input type="text" class="form-control" id="usr">
+        </div>
         <div class="form-group">
             <label for="email"> Email address: </label>
             <input type="email" class="form-control" id="email">
@@ -24,9 +47,9 @@
             <input type="password" class="form-control" id="pwd">
         </div>
         <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
+            <label><input type="checkbox">Remember me</label>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" onclick="return validate();">Submit</button>
     </form>
 
 </div>
