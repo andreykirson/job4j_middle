@@ -16,4 +16,14 @@
         <url-pattern>/greet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>JSONServlet</servlet-name>
+        <servlet-class>servlet.JSONServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JSONServlet</servlet-name>
+        <url-pattern>/returnJson</url-pattern>
+    </servlet-mapping>
+
 </web-app>
