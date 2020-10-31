@@ -29,7 +29,9 @@
 
     function sendingJSON() {
 
-        var jsondata = {text: $("#textId").val()};
+        var jsondata = {
+            text:$("#textId").val()
+        };
 
         $.ajax({
             url: 'http://localhost:8080/jobg4j_middle_war_exploded/returnJson',

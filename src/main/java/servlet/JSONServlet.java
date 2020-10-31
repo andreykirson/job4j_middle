@@ -21,10 +21,9 @@ public class JSONServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        JSONObject jObj = new JSONObject();
-        JSONObject newObj = jObj.getJSONObject(req.getParameter("jsondata"));
-        String json = newObj.getString("text");
-        System.out.println(req.getParameter("text"));
+        Gson gson = new Gson();
+        String json = gson.toJson(req.getParameter("text"), String.class);
+        System.out.println(json);
         PrintWriter out = resp.getWriter();
         out.println(json);
         out.flush();
