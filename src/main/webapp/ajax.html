@@ -28,19 +28,18 @@
     }
 
     function sendingJSON() {
-        var dataJson = {
-            text: $("#textId").val()
-        }
+
+        var jsondata = {text: $("#textId").val()};
 
         $.ajax({
             url: 'http://localhost:8080/jobg4j_middle_war_exploded/returnJson',
-            type: 'post',
+            type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
-            success: function (dataJson) {
-                alert(dataJson.msg);
-            },
-            data: JSON.stringify(dataJson)
+            data: JSON.stringify(jsondata),
+            success: function (data) {
+                alert('get value' + this.data);
+            }
         });
     }
 </script>

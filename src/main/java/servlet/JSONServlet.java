@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import org.json.JSONObject;
 
 /**
  * @author Andrey
@@ -20,9 +21,12 @@ public class JSONServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        String json = new Gson().toJson(req.getParameter("text"));
-        PrintWriter writer = new PrintWriter(resp.getOutputStream());
-        writer.println(json);
-        writer.flush();
+        JSONObject jObj = new JSONObject();
+        JSONObject newObj = jObj.getJSONObject(req.getParameter("jsondata"));
+        String json = newObj.getString("text");
+        System.out.println(req.getParameter("text"));
+        PrintWriter out = resp.getWriter();
+        out.println(json);
+        out.flush();
     }
 }
